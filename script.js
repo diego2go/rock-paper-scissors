@@ -54,3 +54,4 @@ function game() {
         return "You lost. Computers FTW!"
     }
 }
+console.log("Use console.log(game()) to initiate. Reload page to reset counter.");
