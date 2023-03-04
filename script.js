@@ -55,3 +55,11 @@ function game() {
     }
 }
 console.log("Use console.log(game()) to initiate. Reload page to reset counter.");
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.textContent, computerSelection);
+    })
+})
