@@ -43,7 +43,7 @@ console.log(computerSelection);
 console.log(playRound(playerSelection,computerSelection)); */
 
 // game function. Play a 5 round game, keep records and define winner at the end.
-function game() {
+/* function game() {
     for (let i = 0; i < 5; i++) {
         playRound(playerSelection = prompt("What is your selection?", "Rock,paper or scissors"), computerSelection);
         console.log("Computer", computerCounter, "You", playerCounter);
@@ -54,7 +54,7 @@ function game() {
         return "You lost. Computers FTW!"
     }
 }
-console.log("Use console.log(game()) to initiate. Reload page to reset counter.");
+console.log("Use console.log(game()) to initiate. Reload page to reset counter."); */
 
 const buttons = document.querySelectorAll('button');
 
@@ -63,3 +63,10 @@ buttons.forEach((button) => {
         playRound(button.textContent, computerSelection);
     })
 })
+
+// adding a div to display counter
+const counter = document.createElement('div');
+counter.textContent = `Computer ${computerCounter} - You ${playerCounter}`;
+
+const div = document.querySelector('.container');
+div.appendChild(counter);
