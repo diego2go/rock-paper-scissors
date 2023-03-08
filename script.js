@@ -33,40 +33,31 @@ function playRound(playerSelection, computerSelection) {
         computerCounter += 1;
         return "You lose! Paper beats rock";
     }else{
-        alert("Tied!");
+        return "Tied!";
     }
 }
-// for initial checking of playRound and getComputerChoice
-/* let playerSelection = "rock";
-
-console.log(computerSelection);
-console.log(playRound(playerSelection,computerSelection)); */
-
-// game function. Play a 5 round game, keep records and define winner at the end.
-/* function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound(playerSelection = prompt("What is your selection?", "Rock,paper or scissors"), computerSelection);
-        console.log("Computer", computerCounter, "You", playerCounter);
-    }
-    if(playerCounter > computerCounter){
-        return "You win!"
-    }else{
-        return "You lost. Computers FTW!"
-    }
-}
-console.log("Use console.log(game()) to initiate. Reload page to reset counter."); */
 
 const buttons = document.querySelectorAll('button');
+const counter = document.createElement('div');
+const roundMessage = document.createElement('p');
+const div = document.querySelector('.container');
+const resetBtn = document.createElement('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        playRound(button.textContent, computerSelection);
+        roundMessage.textContent = playRound(button.textContent, getComputerChoice());
+        counter.textContent = `Computer ${computerCounter} - You ${playerCounter}`;
+        if(playerCounter == 5 && playerCounter > computerCounter) {
+            roundMessage.textContent = "You win!";
+            playerCounter = 0;
+            computerCounter = 0;
+        }
+        else if(computerCounter == 5 && computerCounter > playerCounter) {
+            roundMessage.textContent = "You lost. Computers FTW!";
+            playerCounter = 0;
+            computerCounter = 0;
+        }
     })
 })
-
-// adding a div to display counter
-const counter = document.createElement('div');
-counter.textContent = `Computer ${computerCounter} - You ${playerCounter}`;
-
-const div = document.querySelector('.container');
 div.appendChild(counter);
+div.appendChild(roundMessage);
